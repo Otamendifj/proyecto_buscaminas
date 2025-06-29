@@ -1,8 +1,9 @@
 from juego3 import Juego
 
+
 def main():
     juego = Juego()
-    
+
     while True:
         juego.mostrar_menu_principal()
         opcion = input("Seleccione una opción: ").strip()
@@ -30,8 +31,20 @@ def main():
                 juego.mostrar_tablero()
                 
                 try:
-                    fila = int(input("\nFila (1-{}): ".format(juego.tablero.filas))) - 1
-                    col = int(input("Columna (1-{}): ".format(juego.tablero.columnas))) - 1
+                    while True:
+                        fila = int(input("\nFila (1-{}): ".format(juego.tablero.filas))) -1
+                        if fila + 1 <= juego.tablero.filas and fila + 1 > 0:
+                            break
+                        else:
+                            print("Fila fuera de los limites, ingrese otro numero")
+
+                    while True:
+                        col = int(input("Columna (1-{}): ".format(juego.tablero.columnas)))-1 
+                        if col + 1 <= juego.tablero.columnas and col + 1 > 0:
+                            break
+                        else:
+                            print("Columna fuera de los limites, ingrese otro numero")
+                    
 
                     
                     accion = input("Acción (R: Revelar, M: Marcar, S: Salir): ").upper()
@@ -61,6 +74,12 @@ def main():
         elif opcion == '3':
             print("¡Gracias por jugar!")
             break
+        else:
+            print("Opción no válida")
+            input("Presione Enter para continuar...")
+
+if __name__ == "__main__":
+    main()
         else:
             print("Opción no válida")
             input("Presione Enter para continuar...")
