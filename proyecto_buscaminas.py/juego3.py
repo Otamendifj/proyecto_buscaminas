@@ -195,3 +195,4 @@ class Juego:
         if self.casillas[fila][columna].minas_colindantes == 0:
             Tablero.revelar_colindantes(fila, columna)
             
+            
